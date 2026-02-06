@@ -1,101 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For My Love ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Poppins", sans-serif;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      max-width: 350px;
-      width: 90%;
-    }
+  /* Floating hearts background */
+  .heart {
+    position: absolute;
+    color: rgba(255, 0, 100, 0.6);
+    font-size: 20px;
+    animation: float 6s linear infinite;
+  }
 
-    h1 {
-      color: #e63946;
-      margin-bottom: 15px;
-    }
+  @keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+  }
 
-    video {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    max-width: 350px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
 
-    button {
-      padding: 12px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 8px;
-      transition: 0.2s;
-    }
+  .card::before {
+    content: "❤️ 💕 💖 💘 💝";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+  }
 
-    #yes {
-      background: #e63946;
-      color: white;
-    }
+  h1 {
+    color: #e63946;
+    margin-bottom: 15px;
+  }
 
-    #no {
-      background: #adb5bd;
-      color: black;
-      position: relative;
-    }
+  img, video {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
 
-    button:hover {
-      transform: scale(1.1);
-    }
+  button {
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 8px;
+    transition: 0.2s;
+  }
 
-    #message {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #e63946;
-      display: none;
-    }
-  </style>
+  #yes {
+    background: #e63946;
+    color: white;
+  }
+
+  #no {
+    background: #adb5bd;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  #final {
+    display: none;
+    color: #e63946;
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  /* Popup */
+  .popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 300px;
+  }
+
+  .popup-content img {
+    width: 100%;
+    border-radius: 15px;
+  }
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>Will you be mine? 💖</h1>
+<!-- Card -->
+<div class="card">
+  <h1>Will you be mine? 💖</h1>
 
-    <!-- GIF / VIDEO -->
-    <video autoplay loop muted playsinline>
-      <source src="https://i.imgur.com/3jIHKjE.mp4" type="video/mp4">
-    </video>
+  <video autoplay loop muted playsinline>
+    <source src="https://i.imgur.com/3jIHKjE.mp4" type="video/mp4">
+  </video>
 
-    <div>
-      <button id="yes">Yes ❤️</button>
-      <button id="no">No 🙈</button>
-    </div>
-
-    <div id="message">
-      YAY!!! I knew it 😍💘
-    </div>
+  <div>
+    <button id="yes">Yes ❤️</button>
+    <button id="no">No 🙈</button>
   </div>
 
-  <script>
-    const yesBtn = document.getElementById("yes");
-    const noBtn = document.getElementById("no");
-    const msg = document.getElementById("message");
+  <div id="final">
+    <img src="https://media.tenor.com/m8ks5CktT0wAAAAM/dogo-luldogo.gif">
+    <p>I love you too ❤️</p>
+  </div>
+</div>
 
-    yesBtn.onclick = () => {
-      msg.style.display = "block";
-    };
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3>Did you mean YES? 😏❤️</h3>
+    <img src="https://i.pinimg.com/474x/5f/c7/1e/5fc71eb7fdb2940db3cae81326078703.jpg">
+    <br><br>
+    <button id="confirmYes">Yes 💕</button>
+  </div>
+</div>
+
+<script>
+  let yesCount = 0;
+  const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
+  const popup = document.getElementById("popup");
+  const confirmYes = document.getElementById("confirmYes");
+  const final = document.getElementById("final");
+
+  yesBtn.onclick = () => {
+    yesCount++;
+    if (yesCount === 1) {
+      popup.style.display = "flex";
+    } else {
+      final.style.display = "block";
+    }
+  };
+
+  confirmYes.onclick = () => {
+    popup.style.display = "none";
+    final.style.display = "block";
+  };
+
+  noBtn.onmouseover = () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  };
+
+  /* Background hearts */
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+</script>
+
+</body>
+</html>
