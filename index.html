@@ -20,6 +20,8 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: opacity 1s ease;
+  opacity: 1;
 }
 
 /* Floating hearts */
@@ -57,7 +59,7 @@ body {
 
 h1 {
   color: #e63946;
-  font-size: 40px; /* increased */
+  font-size: 40px; /* increased font */
   margin-bottom: 15px;
   line-height: 1.2;
 }
@@ -109,9 +111,12 @@ button:hover {
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 
-/* YES redirects to new page */
+/* YES -> fade out then redirect */
 yesBtn.onclick = () => {
-  window.location.href = "valentine.html";
+  document.body.style.opacity = 0; // start fade out
+  setTimeout(() => {
+    window.location.href = "valentine.html"; // go to new page
+  }, 1000); // wait 1 second for fade
 };
 
 /* NO button runs away */
