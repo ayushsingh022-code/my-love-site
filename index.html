@@ -2,136 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Love ❤️</title>
+<title>Trending Love ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* Floating hearts background */
-  .heart {
-    position: absolute;
-    color: rgba(255, 0, 100, 0.6);
-    font-size: 20px;
-    animation: float 6s linear infinite;
-  }
+/* Floating hearts background */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  color: rgba(255, 0, 100, 0.6);
+  z-index: 0;
+}
 
-  @keyframes float {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
-  }
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
+}
 
-  .card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    max-width: 350px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-  }
+/* Card */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  text-align: center;
+  width: 320px;
+  position: relative;
+  z-index: 2;
+}
 
-  .card::before {
-    content: "❤️ 💕 💖 💘 💝";
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 22px;
-  }
+.card::before {
+  content: "❤️ 💕 💖 💘 💝";
+  display: block;
+  margin-bottom: 10px;
+}
 
-  h1 {
-    color: #e63946;
-    margin-bottom: 15px;
-  }
+h1 {
+  color: #e63946;
+  margin-bottom: 15px;
+}
 
-  img, video {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
-  }
+video, img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
 
-  button {
-    padding: 12px 28px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 8px;
-    transition: 0.2s;
-  }
+/* Buttons */
+button {
+  padding: 10px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 6px;
+  transition: 0.2s;
+}
 
-  #yes {
-    background: #e63946;
-    color: white;
-  }
+#yes {
+  background: #e63946;
+  color: white;
+}
 
-  #no {
-    background: #adb5bd;
-  }
+#no {
+  background: #adb5bd;
+}
 
-  button:hover {
-    transform: scale(1.1);
-  }
+button:hover {
+  transform: scale(1.1);
+}
 
-  #final {
-    display: none;
-    color: #e63946;
-    font-size: 22px;
-    margin-top: 10px;
-  }
+/* Final message */
+#final {
+  display: none;
+  margin-top: 15px;
+  color: #e63946;
+  font-size: 22px;
+}
 
-  /* Popup */
-  .popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-  }
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
 
-  .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 300px;
-  }
-
-  .popup-content img {
-    width: 100%;
-    border-radius: 15px;
-  }
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 280px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- Card -->
 <div class="card">
   <h1>Will you be mine? 💖</h1>
 
+  <!-- Original style video -->
   <video autoplay loop muted playsinline>
     <source src="https://i.imgur.com/3jIHKjE.mp4" type="video/mp4">
   </video>
 
-  <div>
-    <button id="yes">Yes ❤️</button>
-    <button id="no">No 🙈</button>
-  </div>
+  <button id="yes">Yes ❤️</button>
+  <button id="no">No 🙈</button>
 
   <div id="final">
     <img src="https://media.tenor.com/m8ks5CktT0wAAAAM/dogo-luldogo.gif">
@@ -143,50 +137,54 @@
 <div class="popup" id="popup">
   <div class="popup-content">
     <h3>Did you mean YES? 😏❤️</h3>
-    <img src="https://i.pinimg.com/474x/5f/c7/1e/5fc71eb7fdb2940db3cae81326078703.jpg">
+    <img src="https://i.pinimg.com/474x/5f/c7/1e/5fc71eb7fdb2940db3cae81326078703.jpg"
+         style="width:100%;border-radius:15px;">
     <br><br>
     <button id="confirmYes">Yes 💕</button>
   </div>
 </div>
 
 <script>
-  let yesCount = 0;
-  const yesBtn = document.getElementById("yes");
-  const noBtn = document.getElementById("no");
-  const popup = document.getElementById("popup");
-  const confirmYes = document.getElementById("confirmYes");
-  const final = document.getElementById("final");
+let yesCount = 0;
 
-  yesBtn.onclick = () => {
-    yesCount++;
-    if (yesCount === 1) {
-      popup.style.display = "flex";
-    } else {
-      final.style.display = "block";
-    }
-  };
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const popup = document.getElementById("popup");
+const confirmYes = document.getElementById("confirmYes");
+const finalMsg = document.getElementById("final");
 
-  confirmYes.onclick = () => {
-    popup.style.display = "none";
-    final.style.display = "block";
-  };
+/* YES logic */
+yesBtn.onclick = () => {
+  yesCount++;
+  if (yesCount === 1) {
+    popup.style.display = "flex";
+  } else {
+    finalMsg.style.display = "block";
+  }
+};
 
-  noBtn.onmouseover = () => {
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-  };
+confirmYes.onclick = () => {
+  popup.style.display = "none";
+  finalMsg.style.display = "block";
+};
 
-  /* Background hearts */
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }, 300);
+/* NO button escape */
+noBtn.onmouseover = () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+};
+
+/* Background hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
 </script>
 
 </body>
